@@ -2,14 +2,42 @@ package com.lucaspapini.defaultapi.model;
 
 import java.security.Timestamp;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "users")
 public class User {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
+  @Column(name = "first_name", nullable = false, length = 80)
   private String firstName;
+
+  @Column(name = "last_name", nullable = false, length = 80)
   private String lastName;
+
+  @Column(nullable = false, length = 250)
   private String email;
+
+  @Column(nullable = false, length = 250)
   private String password;
+
+  @Column(nullable = false, length = 80)
   private Integer role;
+
+  @Column(nullable = false)
   private Integer isActive;
+
+  @UpdateTimestamp
+  @Column(nullable = false)
   private Timestamp lastLogin;
 
   public User(Long id, String firstName, String lastName, String email, String password, Integer role,
