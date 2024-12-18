@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lucaspapini.defaultapi.model.User;
 
 @RestController
-@RequestMapping(value = "/api/user/v1")
+@RequestMapping(value = "/api/v1/user")
 public class UserController {
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)

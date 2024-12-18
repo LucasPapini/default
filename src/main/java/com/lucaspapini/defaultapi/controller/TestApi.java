@@ -10,7 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
-@RequestMapping("/api/test/v1")
+@RequestMapping("/api/v1/test")
 public class TestApi {
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
