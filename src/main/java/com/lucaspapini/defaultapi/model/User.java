@@ -1,5 +1,6 @@
 package com.lucaspapini.defaultapi.model;
 
+import java.io.Serializable;
 import java.security.Timestamp;
 
 import org.hibernate.annotations.UpdateTimestamp;
@@ -13,7 +14,10 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
+
+  private static final long serialVersionUID = 1l;
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
