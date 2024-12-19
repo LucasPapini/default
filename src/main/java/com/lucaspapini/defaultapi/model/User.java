@@ -1,9 +1,11 @@
 package com.lucaspapini.defaultapi.model;
 
 import java.io.Serializable;
-import java.security.Timestamp;
+import java.time.LocalDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -40,12 +42,12 @@ public class User implements Serializable {
   @Column(nullable = false)
   private Integer isActive;
 
-  @UpdateTimestamp
   @Column(nullable = false)
-  private Timestamp lastLogin;
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  private LocalDateTime lastLogin;
 
   public User(Long id, String firstName, String lastName, String email, String password, Integer role,
-      Integer isActive) {
+      Integer isActive, LocalDateTime lastLogin) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -53,6 +55,7 @@ public class User implements Serializable {
     this.password = password;
     this.role = role;
     this.isActive = isActive;
+    this.lastLogin = lastLogin;
   }
 
   public User() {
@@ -114,11 +117,11 @@ public class User implements Serializable {
     this.isActive = isActive;
   }
 
-  public Timestamp getLastLogin() {
+  public LocalDateTime getLastLogin() {
     return lastLogin;
   }
 
-  public void setLastLogin(Timestamp lastLogin) {
+  public void setLastLogin(LocalDateTime lastLogin) {
     this.lastLogin = lastLogin;
   }
 
